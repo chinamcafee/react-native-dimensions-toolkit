@@ -37,7 +37,7 @@ class DimensionsToolkitModule(private val reactContext: ReactApplicationContext)
   private fun getRealScreenSize(): Point {
 
     val windowManager = reactContext.getSystemService(WINDOW_SERVICE) as WindowManager
-    val display = windowManager.defaultDisplay
+    val display = (reactContext.getSystemService(WINDOW_SERVICE) as WindowManager).defaultDisplay
 
     val size = Point()
 
@@ -47,16 +47,14 @@ class DimensionsToolkitModule(private val reactContext: ReactApplicationContext)
       val heightInDp = windowMetrics.getBounds().height()
       size.x = widthInDp
       size.y = heightInDp
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
-            Build.VERSION.SDK_INT < Build.VERSION_CODES.R
-    ) {
+    } else
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
       try {
-
-        size.x = Display::class.java.getMethod("getRawWidth").invoke(display) as Int
-        size.y = Display::class.java.getMethod("getRawHeight").invoke(display) as Int
-      } catch (e: Exception) {}
+        display.getRealSize(size)
+      } catch (e: Exception) {
+        e.printStackTrace()
+      }
     }
-
     return size
   }
 
