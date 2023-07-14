@@ -6,17 +6,22 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
+interface ScreenSize {
+  width: number;
+  height: number;
+}
+
 const DimensionsToolkit = NativeModules.DimensionsToolkit
   ? NativeModules.DimensionsToolkit
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return DimensionsToolkit.multiply(a, b);
+export function getScreenSize(): Promise<ScreenSize> {
+  return DimensionsToolkit.getScreenSize()
 }

@@ -1,6 +1,6 @@
 # react-native-dimensions-toolkit
 
-A native toolkit of getting device dimension
+A native toolkit of getting correct device screen dimension, including foldable devices close and open screen.
 
 ## Installation
 
@@ -9,14 +9,16 @@ npm install react-native-dimensions-toolkit
 ```
 
 ## Usage
+The result contains {width, height}, which is the current device screen dimension
 
 ```js
-import { multiply } from 'react-native-dimensions-toolkit';
+import { getScreenSize } from 'react-native-dimensions-toolkit';
 
 // ...
 
-const result = await multiply(3, 7);
+const result = await getScreenSize();
 ```
+
 
 ## Contributing
 

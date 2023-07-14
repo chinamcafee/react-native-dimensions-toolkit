@@ -1,8 +1,19 @@
+import UIKit
+
 @objc(DimensionsToolkit)
 class DimensionsToolkit: NSObject {
 
-  @objc(multiply:withB:withResolver:withRejecter:)
-  func multiply(a: Float, b: Float, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-    resolve(a*b)
+  @objc(getScreenSize:withRejecter:)
+  func getScreenSize(resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+      resolve(getScreenSize())
   }
+
+  func getScreenSize() -> NSDictionary {
+    let bounds = UIScreen.main.bounds
+
+    return [
+        "width": bounds.size.width,
+        "height": bounds.size.height
+    ] as NSDictionary
+}
 }
