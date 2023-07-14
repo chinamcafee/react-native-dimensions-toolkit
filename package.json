@@ -1,6 +1,6 @@
 {
   "name": "react-native-dimensions-toolkit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A native toolkit of getting device dimension",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
