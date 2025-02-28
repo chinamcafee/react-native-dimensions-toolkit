@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "react-native-dimensions-toolkit": ["../src/index"],
+      "react-native-dimensions-toolkit/*": ["../src/*"]
+    }
+  }
+}

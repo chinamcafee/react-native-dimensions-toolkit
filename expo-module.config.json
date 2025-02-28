@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "tvos", "android", "web"],
+  "ios": {
+    "modules": ["ReactNativeDimensionsToolkitModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.dimensionstoolkit.ReactNativeDimensionsToolkitModule"]
+  }
+}
